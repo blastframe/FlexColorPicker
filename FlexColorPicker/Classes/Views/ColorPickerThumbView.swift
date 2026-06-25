@@ -121,7 +121,7 @@ open class ColorPickerThumbView: UIViewWithCommonInit {
 
 extension ColorPickerThumbView {
     
-    open func setExpanded(_ expanded: Bool, animated: Bool) {
+    public func setExpanded(_ expanded: Bool, animated: Bool) {
         let transform = expanded && expandOnTap ? CATransform3DMakeScale(expandedUpscaleRatio, expandedUpscaleRatio, 1) : CATransform3DIdentity
         let textLabelRaiseAmount: CGFloat = expanded && expandOnTap ? (bounds.height / 2) * defaultExpandedUpscaleRatio + textLabelUpShift : (bounds.height / 2)  + textLabelUpShift
         let labelTransform = CATransform3DMakeTranslation(0, -textLabelRaiseAmount, 0)
@@ -135,7 +135,7 @@ extension ColorPickerThumbView {
         }, completion: nil)
     }
 
-    open func setDarkBorderIfNeeded(animated: Bool = true) {
+    public func setDarkBorderIfNeeded(animated: Bool = true) {
         let (_, s, b) = color.hsbColor.asTupleNoAlpha()
         let isBorderDark = autoDarken && 1 - b < brightnessToChangeToDark && s < saturationToChangeToDark
 //        let isBorderDark = autoDarken && color.constrastRatio(with: .white) < maxContrastRatioWithWhiteToDarken
@@ -149,7 +149,7 @@ extension ColorPickerThumbView {
         #endif
     }
 
-    open var colorIdicatorRadius: CGFloat {
+    public var colorIdicatorRadius: CGFloat {
         return bounds.width / 2 - wideBorderWidth
     }
 
